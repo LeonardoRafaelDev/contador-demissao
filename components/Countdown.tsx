@@ -33,6 +33,7 @@ const Countdown: React.FC = () => {
   const [currentDayInfo, setCurrentDayInfo] = useState<DayInfo>(daysInfo[0]);
   const [showConfetti, setShowConfetti] = useState(false);
   const [confettiIntensity, setConfettiIntensity] = useState(0);
+  const [showYoutubeLink, setShowYoutubeLink] = useState(false);
 
   useEffect(() => {
     const targetDate = new Date('2024-10-20T00:00:00').getTime();
@@ -52,19 +53,22 @@ const Countdown: React.FC = () => {
 
         if (days <= 2 && days > 0) {
           setShowConfetti(true);
-          setConfettiIntensity(20); 
+          setConfettiIntensity(200); 
         } else if (days === 0) {
           setShowConfetti(true);
           setConfettiIntensity(4000); 
+          setShowYoutubeLink(true);
         } else {
           setShowConfetti(false);
           setConfettiIntensity(0);
+          setShowYoutubeLink(false);
         }
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         setCurrentDayInfo(daysInfo[8]);
         setShowConfetti(true);
         setConfettiIntensity(200); 
+        setShowYoutubeLink(true);
       }
     };
 
@@ -96,6 +100,16 @@ const Countdown: React.FC = () => {
         />
       </div>
       <p className="text-xl text-center font-semibold mb-4">{currentDayInfo.text}</p>
+      {showYoutubeLink && (
+        <a
+          href={process.env.NEXT_PUBLIC_YOUTUBE_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Assista ao Vídeo no YouTube!
+        </a>
+      )}
     </div>
   );
 };
