@@ -87,7 +87,7 @@ const Countdown: React.FC = () => {
           numberOfPieces={confettiIntensity}
         />
       )}
-      <h1 className="text-4xl font-bold mb-4 text-center">Contagem Regressiva para 20 de Outubro</h1>
+      <h1 className="text-4xl font-bold mb-4 text-center">Contagem Regressiva para Demissão da joicinha #lilivaicanta #vemnoinpacto</h1>
       <p className="text-2xl mb-4 text-center">
         {timeLeft.days} dias, {timeLeft.hours} horas, {timeLeft.minutes} minutos e {timeLeft.seconds} segundos
       </p>
