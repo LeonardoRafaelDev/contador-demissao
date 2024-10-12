@@ -107,7 +107,7 @@ const Countdown: React.FC = () => {
           rel="noopener noreferrer"
           className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
         >
-          Assista ao Vídeo no YouTube!
+          VIDEOOOOOOOOOOOOOOOOO
         </a>
       )}
     </div>
