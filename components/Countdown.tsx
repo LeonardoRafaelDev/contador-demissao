@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
-const images: string[] = [
-  '/imagem-dia-1.jpg',
-  '/imagem-dia-2.jpg',
-  '/imagem-dia-3.jpg',
-  '/imagem-dia-4.jpg',
-  '/imagem-dia-5.jpg',
-  '/imagem-dia-6.jpg',
-  '/imagem-dia-7.jpg',
-  '/imagem-dia-8.jpg',
-  '/imagem-dia-9.jpg',
+const ReactConfetti = dynamic(() => import('react-confetti'), { ssr: false });
+
+interface DayInfo {
+  image: string;
+  text: string;
+}
+
+const daysInfo: DayInfo[] = [
+  { image: '/imagem-dia-1.gif', text: 'ULTIMO DIA CARALHOOOO AMANHA E UM DIA NOVOOOOO VAMOOOOOOO PAPAPUPU🎆🎇PAPUL🎆🎇🎇🎆FIIILLLPUUUUUPOWPOWPOWPOW🎇🎇🎇🎆🎆🎆PAPAPAPATRATRATRATRATRA🎇🎆🎇🎆🎇🎆🎇🎆🎇TATATATATAFIIIIILLLFIIIIILLLLFIIIIIIILLLPOOOWWWWWW🎇🎆🎇🎆🎇🎆🎇🎇🎆🎇🎆🎇🎆🎇🎆🎇PAPAPAPAPUPUPUPUPU🎉🎉🎉🎊🎊🎊🎊🎉🎉🎉🎊🎊🎊PATAPUTWPULFILPOWPOW' },
+  { image: '/imagem-dia-2.jpg', text: '2 DIAAAAAS CHEIRINHO DE VIDA NOVAAAAAA' },
+  { image: '/imagem-dia-3.gif', text: '3 dias VAMOOOOOOOOOO 🚜🚜🚜🐴🐴' },
+  { image: '/imagem-dia-4.jpg', text: '4 dias pode tenta careca' },
+  { image: '/imagem-dia-5.gif', text: '5 dias e so observo tudo pegando fogo #5diaspralilicanta' },
+  { image: '/imagem-dia-6.jpg', text: 'O CHEIRINHO DE QUEM NÃO VAI TER OS CLIENTE PE NO SACO #6DIAS' },
+  { image: '/imagem-dia-7.gif', text: 'So mais uma semana CARALHOOOOOOOOOO 🥳🥳🥳 #VEMAGRO' },
+  { image: '/imagem-dia-8.jpg', text: '🎉TAMO QUASEEEEE CALMAE E RESPIRA GATINHA 🎉' },
+  { image: '/imagem-dia-9.gif', text: 'Amanhã é o grande dia! Prepare-se!' },
 ];
 
 interface TimeLeft {
@@ -22,7 +30,9 @@ interface TimeLeft {
 
 const Countdown: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [currentDayInfo, setCurrentDayInfo] = useState<DayInfo>(daysInfo[0]);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [confettiIntensity, setConfettiIntensity] = useState(0);
 
   useEffect(() => {
     const targetDate = new Date('2024-10-20T00:00:00').getTime();
@@ -38,33 +48,54 @@ const Countdown: React.FC = () => {
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         setTimeLeft({ days, hours, minutes, seconds });
-        setCurrentImageIndex(Math.min(8, days));
+        setCurrentDayInfo(daysInfo[Math.min(8, days)]);
+
+        if (days <= 2 && days > 0) {
+          setShowConfetti(true);
+          setConfettiIntensity(20); 
+        } else if (days === 0) {
+          setShowConfetti(true);
+          setConfettiIntensity(4000); 
+        } else {
+          setShowConfetti(false);
+          setConfettiIntensity(0);
+        }
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        setCurrentImageIndex(8);
+        setCurrentDayInfo(daysInfo[8]);
+        setShowConfetti(true);
+        setConfettiIntensity(200); 
       }
     };
 
-    calculateTimeLeft(); // Calcula imediatamente ao montar o componente
+    calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      {showConfetti && (
+        <ReactConfetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          numberOfPieces={confettiIntensity}
+        />
+      )}
       <h1 className="text-4xl font-bold mb-4 text-center">Contagem Regressiva para 20 de Outubro</h1>
       <p className="text-2xl mb-4 text-center">
         {timeLeft.days} dias, {timeLeft.hours} horas, {timeLeft.minutes} minutos e {timeLeft.seconds} segundos
       </p>
-      <div className="relative w-64 h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
+      <div className="relative w-64 h-64 bg-gray-200 flex items-center justify-center overflow-hidden mb-4">
         <Image
-          src={images[currentImageIndex]}
+          src={currentDayInfo.image}
           alt={`Imagem do dia ${Math.min(9, 9 - timeLeft.days)}`}
           layout="fill"
           objectFit="contain"
         />
       </div>
+      <p className="text-xl text-center font-semibold mb-4">{currentDayInfo.text}</p>
     </div>
   );
 };

@@ -6,8 +6,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Contagem Regressiva de 9 Dias</title>
-        <meta name="description" content="Contagem regressiva de 9 dias com imagens" />
+        <title>#CONTAGEM PARA A LILI CANTAR</title>
+        <meta name="description" content="Contagem de demissão do momozi pra um lugar melhor" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
