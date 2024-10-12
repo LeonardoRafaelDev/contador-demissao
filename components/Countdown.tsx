@@ -62,7 +62,7 @@ const Countdown: React.FC = () => {
           src={images[currentImageIndex]}
           alt={`Imagem do dia ${Math.min(9, 9 - timeLeft.days)}`}
           layout="fill"
-          objectFit="cover"
+          objectFit="contain"
         />
       </div>
     </div>
