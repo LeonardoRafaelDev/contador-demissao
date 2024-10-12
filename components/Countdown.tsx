@@ -53,8 +53,8 @@ const Countdown: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-4">Contagem Regressiva para 20 de Outubro</h1>
-      <p className="text-2xl mb-4">
+      <h1 className="text-4xl font-bold mb-4 text-center">Contagem Regressiva para 20 de Outubro</h1>
+      <p className="text-2xl mb-4 text-center">
         {timeLeft.days} dias, {timeLeft.hours} horas, {timeLeft.minutes} minutos e {timeLeft.seconds} segundos
       </p>
       <div className="relative w-64 h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
