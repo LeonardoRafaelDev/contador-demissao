@@ -12,13 +12,13 @@ interface DayInfo {
 const daysInfo: DayInfo[] = [
   { image: '/imagem-dia-1.gif', text: 'ULTIMO DIA CARALHOOOO AMANHA E UM DIA NOVOOOOO VAMOOOOOOO PAPAPUPU🎆🎇PAPUL🎆🎇🎇🎆FIIILLLPUUUUUPOWPOWPOWPOW🎇🎇🎇🎆🎆🎆PAPAPAPATRATRATRATRATRA🎇🎆🎇🎆🎇🎆🎇🎆🎇TATATATATAFIIIIILLLFIIIIILLLLFIIIIIIILLLPOOOWWWWWW🎇🎆🎇🎆🎇🎆🎇🎇🎆🎇🎆🎇🎆🎇🎆🎇PAPAPAPAPUPUPUPUPU🎉🎉🎉🎊🎊🎊🎊🎉🎉🎉🎊🎊🎊PATAPUTWPULFILPOWPOW' },
   { image: '/imagem-dia-2.jpg', text: '2 DIAAAAAS CHEIRINHO DE VIDA NOVAAAAAA' },
-  { image: '/imagem-dia-3.gif', text: '3 dias VAMOOOOOOOOOO 🚜🚜🚜🐴🐴' },
+  { image: '/imagem-dia-3.jpg', text: '3 dias VAMOOOOOOOOOO 🚜🚜🚜🐴🐴' },
   { image: '/imagem-dia-4.jpg', text: '4 dias pode tenta careca' },
-  { image: '/imagem-dia-5.gif', text: '5 dias e so observo tudo pegando fogo #5diaspralilicanta' },
+  { image: '/imagem-dia-5.jpg', text: '5 dias e so observo tudo pegando fogo #5diaspralilicanta' },
   { image: '/imagem-dia-6.jpg', text: 'O CHEIRINHO DE QUEM NÃO VAI TER OS CLIENTE PE NO SACO #6DIAS' },
-  { image: '/imagem-dia-7.gif', text: 'So mais uma semana CARALHOOOOOOOOOO 🥳🥳🥳 #VEMAGRO' },
+  { image: '/imagem-dia-7.jpg', text: 'So mais uma semana CARALHOOOOOOOOOO 🥳🥳🥳 #VEMAGRO' },
   { image: '/imagem-dia-8.jpg', text: '🎉TAMO QUASEEEEE CALMAE E RESPIRA GATINHA 🎉' },
-  { image: '/imagem-dia-9.gif', text: 'Amanhã é o grande dia! Prepare-se!' },
+  { image: '/imagem-dia-9.jpg', text: 'Amanhã é o grande dia! Prepare-se!' },
 ];
 
 interface TimeLeft {
